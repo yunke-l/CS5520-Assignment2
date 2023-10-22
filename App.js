@@ -1,68 +1,18 @@
 import * as React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AllExpensesScreen from './screens/All';
 import OverbudgetExpensesScreen from './screens/Overbudget';
-import { FontAwesome5 } from '@expo/vector-icons';
+import BottomTabBar from './components/BottomTabBar';
 
-function MyTabBar({ state, descriptors, navigation }) {
-  return (
-    <View style={{ flexDirection: 'row' }}>
-      {state.routes.map((route, index) => {
-        const { options } = descriptors[route.key];
 
-        const label = route.name === 'All Expenses' ? 'Home' : 'Overbudget';
-
-        const isFocused = state.index === index;
-
-        const iconName = route.name === 'All Expenses' ? 'home' : 'exclamation';
-
-        const onPress = () => {
-          const event = navigation.emit({
-            type: 'tabPress',
-            target: route.key,
-          });
-
-          if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate(route.name);
-          }
-        };
-
-        const onLongPress = () => {
-          navigation.emit({
-            type: 'tabLongPress',
-            target: route.key,
-          });
-        };
-
-        return (
-          <TouchableOpacity
-            accessibilityRole="button"
-            accessibilityState={isFocused ? { selected: true } : {}}
-            accessibilityLabel={options.tabBarAccessibilityLabel}
-            testID={options.tabBarTestID}
-            onPress={onPress}
-            onLongPress={onLongPress}
-            style={{ flex: 1 }}
-          >
-            <FontAwesome5 name={iconName} size={24} color="black" />
-            <Text style={{ color: isFocused ? '#673ab7' : '#222' }}>
-              {label}
-            </Text>
-          </TouchableOpacity>
-        );
-      })}
-    </View>
-  );
-}
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
+      <Tab.Navigator tabBar={(props) => <BottomTabBar {...props} />}>
         <Tab.Screen name="All Expenses" component={AllExpensesScreen} />
         <Tab.Screen name="Overbudget Expenses" component={OverbudgetExpensesScreen} />
       </Tab.Navigator>

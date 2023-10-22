@@ -4,21 +4,19 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AllExpensesScreen from './screens/All';
 import OverbudgetExpensesScreen from './screens/Overbudget';
-
+import { FontAwesome5 } from '@expo/vector-icons';
 
 function MyTabBar({ state, descriptors, navigation }) {
   return (
     <View style={{ flexDirection: 'row' }}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
-        const label =
-          options.tabBarLabel !== undefined
-            ? options.tabBarLabel
-            : options.title !== undefined
-            ? options.title
-            : route.name;
+
+        const label = route.name === 'All Expenses' ? 'Home' : 'Overbudget';
 
         const isFocused = state.index === index;
+
+        const iconName = route.name === 'All Expenses' ? 'home' : 'exclamation';
 
         const onPress = () => {
           const event = navigation.emit({
@@ -48,6 +46,7 @@ function MyTabBar({ state, descriptors, navigation }) {
             onLongPress={onLongPress}
             style={{ flex: 1 }}
           >
+            <FontAwesome5 name={iconName} size={24} color="black" />
             <Text style={{ color: isFocused ? '#673ab7' : '#222' }}>
               {label}
             </Text>

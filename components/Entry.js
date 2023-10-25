@@ -27,7 +27,9 @@ const Entry = ({entry}) => {
             >
             <Text style={styles.text}>{entry.item}</Text>
 
-            <Foundation name="alert" size={24} color="black" />
+            {entry.quantity * entry.unitPrice > 500 && ( 
+                <Foundation name="alert" size={24} color="red" />
+            )}
 
             <Text style={styles.text}>{entry.quantity} * {entry.unitPrice}</Text>
             

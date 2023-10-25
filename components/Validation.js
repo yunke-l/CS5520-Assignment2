@@ -17,4 +17,6 @@ export const validateInputs = (item, unitPrice, quantity) => {
           Alert.alert('Please select a quantity from the picker.');
           return false;
       }
+
+      return true;
 }

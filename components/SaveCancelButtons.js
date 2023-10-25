@@ -39,9 +39,17 @@ const styles = StyleSheet.create({
     },
     cancelPressed: {
         backgroundColor: '#C70039',
+        width: '30%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 5,
     },
     savePressed: {
         backgroundColor: '#0B666A',
+        width: '30%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 5,
     },
     default: {
         backgroundColor: '#4B527E',

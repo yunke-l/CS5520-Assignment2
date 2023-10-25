@@ -11,7 +11,7 @@ function AddAnExpenseScreen( {navigation} ) {
   const [quantity, setQuantity] = useState('');
 
   // budget limit
-  const [budget] = useState(500);
+  const budget = 500;
    
 
   // Save button handler

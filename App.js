@@ -7,6 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import AllExpensesScreen from './screens/All';
 import OverbudgetExpensesScreen from './screens/Overbudget';
 import AddAnExpenseScreen from './screens/Add';
+import EditScreen from './screens/Edit';
 import BottomTabBar from './components/BottomTabBar';
 
 
@@ -65,6 +66,7 @@ export default function App() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Tabs" component={TabNavigator} />
         <Stack.Screen name="Add An Expense" component={AddAnExpenseScreen} options={{ headerShown: true }} />
+        <Stack.Screen name="Edit" component={EditScreen} options={{ headerShown: true }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -26,7 +26,6 @@ const Checkbox = ({ checked, onChange }) => {
             </Text>
           )}
         </View>
-        {/* <Text style={StyleHelper.checkboxLabel}>{label}</Text> */}
       </View>
     </TouchableOpacity>
   );

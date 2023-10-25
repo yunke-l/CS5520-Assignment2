@@ -1,11 +1,9 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { View,StyleSheet } from 'react-native';
 import EntriesList from '../components/EntriesList';
 import { database } from '../firebase/FirebaseSetup';
-import { collection, onSnapshot, getDocs } from 'firebase/firestore';
+import { collection, onSnapshot} from 'firebase/firestore';
 
 function OverbudgetExpensesScreen() {
   const [expenses, setExpenses] = useState([]);
@@ -18,7 +16,7 @@ function OverbudgetExpensesScreen() {
       const expensesList = snapshot.docs.map(doc => ({
         ...doc.data(),
         id: doc.id,
-      })).filter((expense) => expense.quantity * expense.unitPrice > 500);
+      })).filter((expense) => expense.overBudget);
       setExpenses(expensesList);
     });
 

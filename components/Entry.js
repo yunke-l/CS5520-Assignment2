@@ -10,9 +10,6 @@ const Entry = ({entry}) => {
 
     const navigation = useNavigation();
 
-    const deleteHandler = () => {
-        deleteEntry(entry.key);
-    }
 
     function editHandler () {
         navigation.navigate('Edit', {currentEntry: entry});
@@ -27,7 +24,7 @@ const Entry = ({entry}) => {
             >
             <Text style={styles.text}>{entry.item}</Text>
 
-            {entry.quantity * entry.unitPrice > 500 && ( 
+            {entry.overBudget && ( 
                 <Foundation name="alert" size={24} color="red" />
             )}
 

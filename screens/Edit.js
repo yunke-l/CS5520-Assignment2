@@ -1,8 +1,6 @@
 import React, { useState, useLayoutEffect } from 'react';
-import { View, TextInput, Button, Alert, Text, StyleSheet} from 'react-native';
-import DropDownPicker from 'react-native-dropdown-picker';
-import { writeToDB, editInDB, deleteFromDB } from '../firebase/FirebaseHelper';
-import InputComp from '../components/InputComp';
+import { View, Alert, Text, StyleSheet} from 'react-native';
+import { editInDB, deleteFromDB } from '../firebase/FirebaseHelper';
 import PressableButton from '../components/PressableButton';
 import Checkbox from '../components/Checkbox';
 import InputForm from '../components/InputForm';
@@ -19,18 +17,6 @@ function EditScreen( {navigation, route} ) {
     const [overBudget, setOverBudget] = useState(currentEntry.overBudget);
     const [isChecked, setIsChecked] = useState(false);
     const budgetLimit = 500;
-
-    // change handlers
-    const handleItemChange = (text) => {
-        setItem(text);
-    }
-    const handleUnitPriceChange = (text) => {
-        setUnitPrice(text);
-    }
-    const handleQuantityChange = (text) => {
-        setQuantity(text);
-    }
-
 
     // Save button handler
     const handleSave = async () => {

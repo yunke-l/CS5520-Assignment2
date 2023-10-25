@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { database } from '../firebase/FirebaseSetup';
-import { collection, onSnapshot, getDocs } from 'firebase/firestore';
+import { collection, onSnapshot} from 'firebase/firestore';
 import EntriesList from '../components/EntriesList';
 
 

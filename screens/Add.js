@@ -1,44 +1,35 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, Alert, Text} from 'react-native';
-import DropDownPicker from 'react-native-dropdown-picker';
+import { View, Alert, StyleSheet} from 'react-native';
 import { writeToDB } from '../firebase/FirebaseHelper';
-import InputComp from '../components/InputComp';
-import PressableButton from '../components/PressableButton';
+import { validateInputs } from '../components/Validation';
+import InputForm from '../components/InputForm';
+import SaveCancelButtons from '../components/SaveCancelButtons';
 
 function AddAnExpenseScreen( {navigation} ) {
   const [item, setItem] = useState(null);
   const [unitPrice, setUnitPrice] = useState('');
   const [quantity, setQuantity] = useState('');
-  const [quantities, setQuantities] = useState([ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']);
-  const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
-  
+
+  // budget limit
+  const [budget] = useState(500);
+   
 
   // Save button handler
   const handleSave = async () => {
     // Validation
-    // empty inputs
-    if (!item || !unitPrice || !quantity) {
-      Alert.alert('Please check your input values.');
+    if (!validateInputs(item, unitPrice, quantity)) {
       return;
     }
 
-    // invalid inputs
-    if (isNaN(unitPrice) || unitPrice <= 0) {
-      Alert.alert('Unit price must be a number greater than 0.');
-      return;
-    }
-    if (isNaN(quantity) || quantity <= 0) {
-        Alert.alert('Quantity must be a number greater than 0.');
-        return;
-    }
-
+    // Calculate expense
+    const expense = parseInt(unitPrice) * parseInt(quantity);
 
     // Creating an entry object
     const entry = {
       item,
       unitPrice: parseInt(unitPrice),
       quantity: parseInt(quantity),
+      overBudget: expense > budget,
     };
 
     // Saving to Firestore using writeToDB
@@ -59,58 +50,32 @@ function AddAnExpenseScreen( {navigation} ) {
   
 
   return (
-    <View style={{ padding: 20 }}>
-      <InputComp
-        label="Item *"
-        value={item}
-        onChangeText={setItem}
-        // error={item ? null : 'Please enter an item.'}
-
-        />
-
-        <InputComp
-        label="Unit Price *"
-        value={unitPrice}
-        onChangeText={setUnitPrice}
-        // error={unitPrice ? null : 'Please enter a unit price.'}
-        />
+    <View>
+      <View style={styles.inputFormContainer}>
+      <InputForm
+        item={item}
+        unitPrice={unitPrice}
+        quantity={quantity}
+        setItem={setItem}
+        setUnitPrice={setUnitPrice}
+        setQuantity={setQuantity}
+      />
+      </View>
 
 
-        <Text style={{fontSize: 20}}>Quantity *</Text>
-        <DropDownPicker 
-        placeholder=''
-        open={open}
-        setOpen={setOpen}
-        value={value}
-        setValue={(val) => {setQuantity(val); setValue(val)}}
-        items= {quantities.map((val) => ({label: val, value: val}))}
-        defaultValue={unitPrice}
-        style={{backgroundColor: '#fafafa'}}
-        />
-
-        <View>
-            <PressableButton
-                pressedFunction={handleSave}
-                pressedStyle={{backgroundColor: 'blue'}}
-                defaultStyle={{backgroundColor: '#aaa'}}
-            >
-                <Text style={{color: 'white', fontSize: 20}}>Save</Text>
-            </PressableButton>
-
-            <PressableButton
-                pressedFunction={handleCancel}
-                pressedStyle={{backgroundColor: 'red'}}
-                defaultStyle={{backgroundColor: '#aaa'}}
-            >
-                <Text style={{color: 'white', fontSize: 20}}>Cancel</Text>
-            </PressableButton>
-            
-
-        </View>
-
+      <SaveCancelButtons
+        handleSave={handleSave}
+        handleCancel={handleCancel}
+      />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  inputFormContainer: {
+    marginBottom: '50%',
+  },
+});
 
 export default AddAnExpenseScreen;
 

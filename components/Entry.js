@@ -15,7 +15,7 @@ const Entry = ({entry}) => {
     }
 
     function editHandler () {
-        navigation.navigate('Edit', {entry: entry});
+        navigation.navigate('Edit', {currentEntry: entry});
     }
 
     return (

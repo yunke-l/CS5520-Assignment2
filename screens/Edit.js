@@ -7,6 +7,7 @@ import InputForm from '../components/InputForm';
 import SaveCancelButtons from '../components/SaveCancelButtons';
 import { FontAwesome } from '@expo/vector-icons';
 import { validateInputs } from '../components/Validation';
+import GlobalStyles from '../styles/StylesHelper';
 
 // use AddAnExpenseScreen as a template for this screen
 function EditScreen( {navigation, route} ) {
@@ -104,7 +105,7 @@ function EditScreen( {navigation, route} ) {
 
     
     return (
-        <View>
+        <View style={GlobalStyles.container}>
             <View>
                 <View style={styles.inputFormContainer}>
                 <InputForm

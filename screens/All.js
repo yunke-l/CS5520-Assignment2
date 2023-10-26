@@ -4,6 +4,7 @@ import { View, StyleSheet } from 'react-native';
 import { database } from '../firebase/FirebaseSetup';
 import { collection, onSnapshot} from 'firebase/firestore';
 import EntriesList from '../components/EntriesList';
+import GlobalStyles from '../styles/StylesHelper';
 
 
 function AllExpensesScreen() {
@@ -24,7 +25,7 @@ function AllExpensesScreen() {
   }, []);
 
     return (
-        <View style={styles.container}>
+        <View style={GlobalStyles.container}>
             <EntriesList entries={expenses}/>
         </View>
     );

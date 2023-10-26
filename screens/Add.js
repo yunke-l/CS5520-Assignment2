@@ -4,6 +4,7 @@ import { writeToDB } from '../firebase/FirebaseHelper';
 import { validateInputs } from '../components/Validation';
 import InputForm from '../components/InputForm';
 import SaveCancelButtons from '../components/SaveCancelButtons';
+import GlobalStyles from '../styles/StylesHelper';
 
 function AddAnExpenseScreen( {navigation} ) {
   const [item, setItem] = useState(null);
@@ -50,7 +51,7 @@ function AddAnExpenseScreen( {navigation} ) {
   
 
   return (
-    <View>
+    <View style={GlobalStyles.container}>
       <View style={styles.inputFormContainer}>
       <InputForm
         item={item}

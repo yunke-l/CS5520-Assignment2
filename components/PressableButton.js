@@ -11,14 +11,18 @@ const PressableButton = ({children, pressedFunction, pressedStyle, defaultStyle}
 }
 
 const styles = StyleSheet.create({
+    // styleDefault: {
+    //     backgroundColor: '#aaa',
+    //     flexDirection: 'row',
+    //     marginBottom: 20,
+    //     alignItems: 'center',
+    //     justifyContent: 'space-between',
+    //     borderRadius: 5,
+    //     padding: 10,
+    // },
     styleDefault: {
-        backgroundColor: '#aaa',
-        flexDirection: 'row',
-        marginBottom: 20,
-        alignItems: 'center',
-        justifyContent: 'space-between',
         borderRadius: 5,
-        padding: 10,
+        padding: 5,
     },
 });
 

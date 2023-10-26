@@ -1,8 +1,9 @@
 import React from "react";
-import { Text, StyleSheet} from "react-native";
+import { View, Text, StyleSheet} from "react-native";
 import PressableButton from "./PressableButton";
 import { Foundation } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import colors from "../styles/colors";
 
 
 
@@ -19,17 +20,18 @@ const Entry = ({entry}) => {
         
         <PressableButton 
             pressedFunction={editHandler}
-            pressedStyle={[styles.goalContainer, {backgroundColor: '#add', opacity: 0.5}]}
-            defaultStyle={[styles.goalContainer, {backgroundColor: '#aaa', opacity: 1}]}
+            pressedStyle={[styles.entryContainer, {backgroundColor: colors.entryPressed, opacity: 0.5}]}
+            defaultStyle={[styles.entryContainer, {backgroundColor: colors.entry, opacity: 1}]}
             >
-            <Text style={styles.text}>{entry.item}</Text>
+            <Text style={styles.entryItemText}>{entry.item}</Text>
 
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
             {entry.overBudget && ( 
-                <Foundation name="alert" size={24} color="red" />
+                <><Foundation name="alert" size={30} color={colors.iconFocused} /><Text>    </Text></>
             )}
 
-            <Text style={styles.text}>{entry.quantity} * {entry.unitPrice}</Text>
-            
+                <Text style={styles.entryQuantityText}>{entry.quantity} * {entry.unitPrice}</Text>
+            </View>
         </PressableButton>
 
        
@@ -38,13 +40,15 @@ const Entry = ({entry}) => {
 
 
 const styles = StyleSheet.create({
-    goalContainer: {
-        backgroundColor: '#aaa',
+    entryContainer: {
+        // backgroundColor: '#7895CB',
         flexDirection: 'row',
         marginBottom: 20,
         alignItems: 'center',
         justifyContent: 'space-between',
         borderRadius: 5,
+        marginLeft: 20,
+        marginRight: 20,
     },
     deleteButton: {
         borderRadius: 5,
@@ -52,15 +56,23 @@ const styles = StyleSheet.create({
         margin: 5,
         fontSize: 30,
     },
-    text: {
+    entryItemText: {
         borderRadius: 5,
-        color: 'darkred',
-        fontSize: 30,
+        color: colors.entryItemText,
+        fontSize: 24,
         alignSelf: 'center',
-        padding: 15,
+        padding: 10,
+        overflow: 'hidden'
+    },
+    entryQuantityText: {
+        borderRadius: 5,
+        color: colors.entryQuantityText,
+        backgroundColor: colors.entryQuantityBackground,
+        fontSize: 20,
+        alignSelf: 'center',
+        padding: 8,
         overflow: 'hidden',
-
-    }
+    },
 })
 
 

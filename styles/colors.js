@@ -3,9 +3,13 @@ const colors = {
     'headerText': 'white',
     'screenBackground': '#C5DFF8',
     'entry':'#7895CB',
+    'entryPressed': '#4A55A2',
     'entryText':'white',
     'iconFocused': '#F1C93B',
     'iconDefault': 'white',
+    'entryItemText': 'white',
+    'entryQuantityText': '#4A55A2',
+    'entryQuantityBackground': 'white',
 };
 
 export default colors;

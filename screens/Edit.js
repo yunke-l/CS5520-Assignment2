@@ -8,6 +8,7 @@ import SaveCancelButtons from '../components/SaveCancelButtons';
 import { FontAwesome } from '@expo/vector-icons';
 import { validateInputs } from '../components/Validation';
 import GlobalStyles from '../styles/StylesHelper';
+import colors from '../styles/colors';
 
 // use AddAnExpenseScreen as a template for this screen
 function EditScreen( {navigation, route} ) {
@@ -93,10 +94,10 @@ function EditScreen( {navigation, route} ) {
             headerRight: () => (
                 <PressableButton
                     pressedFunction={handleDelete}
-                    pressedStyle={{ backgroundColor: '#add', opacity: 0.5 }}
-                    defaultStyle={{ backgroundColor: '#aaa', opacity: 1 }}
+                    pressedStyle={{ backgroundColor: colors.header, opacity: 0.5 }}
+                    defaultStyle={{ backgroundColor: colors.header, opacity: 1 }}
                 >
-                    <FontAwesome name="trash" size={24} color="black" />
+                    <FontAwesome name="trash" size={24} color="white" />
                 </PressableButton>
                 ),
             });
@@ -145,7 +146,7 @@ function EditScreen( {navigation, route} ) {
 
     const styles = StyleSheet.create({
         inputFormContainer: {
-          marginBottom: '30%',
+          marginBottom: '40%',
         },
         checkboxContainer: {
             margin: 20,

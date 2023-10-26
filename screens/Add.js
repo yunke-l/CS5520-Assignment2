@@ -74,7 +74,7 @@ function AddAnExpenseScreen( {navigation} ) {
 
 const styles = StyleSheet.create({
   inputFormContainer: {
-    marginBottom: '50%',
+    marginBottom: '40%',
   },
 });
 

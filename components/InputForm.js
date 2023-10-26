@@ -61,12 +61,12 @@ const styles = StyleSheet.create({
       },
 
         dropDownText: {
-            fontSize: 18,
+            fontSize: 16,
             color: '#190482',
             fontWeight: 'bold',
         },
         dropDownLabel: {
-            fontSize: 18,
+            fontSize: 16,
             color: '#190482',
             fontWeight: 'bold',
         },

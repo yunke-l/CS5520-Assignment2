@@ -5,7 +5,7 @@ export default GlobalStyles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: colors.screenBackground,
-        alignItems: 'center',
+        // alignItems: 'center',
         justifyContent: 'center',
     },
 });

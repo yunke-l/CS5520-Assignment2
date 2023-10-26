@@ -1,10 +1,11 @@
-import { FlatList, StyleSheet, View } from 'react-native'
-
+import { FlatList, View } from 'react-native'
 import Entry from './Entry';
+import GlobalStyles from '../styles/StylesHelper';
+
 
 export default function EntriesList({entries}) {
     return (
-        <View style={styles.container}>
+        <View style={GlobalStyles.entriesListContainer}>
             <FlatList
                 data={entries}
                 renderItem={({item}) => {
@@ -17,10 +18,3 @@ export default function EntriesList({entries}) {
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        paddingTop: 30,
-        flex: 1,
-        minWidth: '80%'
-    }
-});

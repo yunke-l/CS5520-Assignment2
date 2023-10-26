@@ -1,14 +1,14 @@
 import React from 'react';
-import {Text, TextInput, View, StyleSheet} from 'react-native';
-// import StyleHelper from '../helpers/StyleHelper';
+import {Text, TextInput, View} from 'react-native';
+import GlobalStyles from '../styles/StylesHelper';
 
 const InputComp = ({label, value, onChangeText, error}) => {
 
     return (
-        <View style={styles.inputContainer}>
-            <Text style={styles.inputText}>{label}</Text>
+        <View style={GlobalStyles.inputContainer}>
+            <Text style={GlobalStyles.inputText}>{label}</Text>
             <TextInput
-                style={styles.input}
+                style={GlobalStyles.input}
                 value={value}
                 onChangeText={onChangeText}
             />
@@ -16,35 +16,5 @@ const InputComp = ({label, value, onChangeText, error}) => {
     );
 
 };
-
-
-
-const styles = StyleSheet.create({
-     // input component styles
-    inputContainer: {
-        marginBottom: '5%',
-    },
-    input: {
-        width: '100%',
-        height: 30,
-        borderRadius: 8,
-        backgroundColor: 'white',
-        alignSelf: 'flex-start', 
-        fontSize: 18,
-        color: '#190482',
-        textAlign: 'left',
-    },
-    
-    inputText: {
-        color: '#190482',
-        fontWeight: 'bold',
-        fontSize: 16,
-        alignSelf: 'flex-start',
-        marginBottom: '2%',
-    },
-
-
-});
-
 
 export default InputComp;

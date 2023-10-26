@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-// import StyleHelper from "../StyleHelper";
+import { View, Text, TouchableOpacity} from "react-native";
+import GlobalStyles from '../styles/StylesHelper';
+import colors from '../styles/colors';
 
 const Checkbox = ({ checked, onChange }) => {
   const toggleCheckbox = () => {
@@ -10,17 +11,17 @@ const Checkbox = ({ checked, onChange }) => {
   return (
     <TouchableOpacity onPress={toggleCheckbox}>
       <View
-        style={StyleHelper.checkboxContainer}
+        style={GlobalStyles.checkboxContainer}
       >
         <View
           style={[
-              StyleHelper.checkbox,
-              { backgroundColor: checked ? "#4B527E" : "transparent" } // Use an array to apply multiple styles
+            GlobalStyles.checkbox,
+              { backgroundColor: checked ? colors.checkboxSelected : colors.checkboxUnselected } 
           ]}
       >
           {checked && (
             <Text
-              style={StyleHelper.checkboxSelected}
+              style={GlobalStyles.checkboxSelected}
             >
               ✓
             </Text>
@@ -31,31 +32,5 @@ const Checkbox = ({ checked, onChange }) => {
   );
 };
 
-const StyleHelper = StyleSheet.create({
-    // checkbox component styles
-    checkboxContainer:{
-        flexDirection: "row",
-        alignItems: "center",
-      },
-      checkbox:{
-        width: 20,
-        height: 20,
-        borderWidth: 1,
-        borderColor: "#4B527E",
-        borderRadius: 3,
-        marginLeft: 10,
-        justifyContent: "center",
-        alignItems: "center",
-      },
-        
-      checkboxLabel: {
-        
-        fontSize: 15,
-      },
-      checkboxSelected: {
-        color: "white",
-        fontWeight: "bold",
-      },
-});
 
 export default Checkbox;

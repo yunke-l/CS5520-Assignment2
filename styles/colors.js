@@ -10,6 +10,8 @@ const colors = {
     'entryItemText': 'white',
     'entryQuantityText': '#4A55A2',
     'entryQuantityBackground': 'white',
+    'checkboxSelected': '#4B527E',
+    'checkboxUnselected': 'transparent',
 };
 
 export default colors;

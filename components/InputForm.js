@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet} from 'react-native';
+import { View, Text} from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import InputComp from './InputComp';
+import GlobalStyles from '../styles/StylesHelper';
 
 const InputForm = ({ item, unitPrice, quantity, setItem, setUnitPrice, setQuantity }) => {
     const [value, setValue] = useState(null);
@@ -10,7 +11,7 @@ const InputForm = ({ item, unitPrice, quantity, setItem, setUnitPrice, setQuanti
     const quantities = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 
     return (
-        <View style={styles.inputFormContainer}>
+        <View style={GlobalStyles.inputFormContainer}>
           <InputComp
             label="Item *"
             value={item}
@@ -24,7 +25,7 @@ const InputForm = ({ item, unitPrice, quantity, setItem, setUnitPrice, setQuanti
             />
     
     
-            <Text style={styles.inputFormText}>Quantity *</Text>
+            <Text style={GlobalStyles.inputFormText}>Quantity *</Text>
             <DropDownPicker 
             placeholder={quantity}
             open={open}
@@ -34,44 +35,14 @@ const InputForm = ({ item, unitPrice, quantity, setItem, setUnitPrice, setQuanti
             items= {quantities.map((val) => ({label: val, value: val}))}
             defaultValue={unitPrice}
             autoScroll={true}
-            style={styles.dropDown}
-            textStyle={styles.dropDownText}
-            labelStyle={styles.dropDownLabel}
+            style={GlobalStyles.dropDown}
+            textStyle={GlobalStyles.dropDownText}
+            labelStyle={GlobalStyles.dropDownLabel}
             />
     
         </View>
       );
     };
-
-const styles = StyleSheet.create({
-    inputFormContainer: {
-        padding: 20, 
-      },
-      inputFormText: {
-        fontSize: 16, 
-        marginBottom: 5, 
-        fontWeight: 'bold',
-        color: '#190482',
-      },
-      dropDown: {
-        backgroundColor: 'white',
-        marginBottom: 20, 
-        borderRadius: 5,
-        borderColor: '#190482',
-      },
-
-        dropDownText: {
-            fontSize: 16,
-            color: '#190482',
-            fontWeight: 'bold',
-        },
-        dropDownLabel: {
-            fontSize: 16,
-            color: '#190482',
-            fontWeight: 'bold',
-        },
-
-});
 
 
 

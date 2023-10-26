@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity} from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import colors from '../styles/colors';
+import GlobalStyles from '../styles/StylesHelper';
 
 function BottomTabBar({ state, descriptors, navigation }) {
   return (
@@ -42,7 +43,7 @@ function BottomTabBar({ state, descriptors, navigation }) {
             testID={options.tabBarTestID}
             onPress={onPress}
             onLongPress={onLongPress}
-            style={{ flex: 1, alignItems: 'center', padding: 10, backgroundColor: colors.header }}
+            style={GlobalStyles.bottomTabBar}
           >
             <FontAwesome5 name={iconName} size={20} color={isFocused ? colors.iconFocused : colors.iconDefault} />
             <Text style={{fontSize: 16, color: isFocused ? colors.iconFocused : colors.iconDefault }}>

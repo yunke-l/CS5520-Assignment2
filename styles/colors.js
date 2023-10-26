@@ -4,7 +4,8 @@ const colors = {
     'screenBackground': '#C5DFF8',
     'entry':'#7895CB',
     'entryText':'white',
-    'icon': '#F1C93B',
+    'iconFocused': '#F1C93B',
+    'iconDefault': 'white',
 };
 
 export default colors;

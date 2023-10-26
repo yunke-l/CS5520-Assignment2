@@ -49,6 +49,12 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         marginLeft: 20,
         marginRight: 20,
+        // add shade to the background
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8,
+        shadowRadius: 5,
+        elevation: 5,
     },
     deleteButton: {
         borderRadius: 5,

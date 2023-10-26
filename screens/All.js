@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import { database } from '../firebase/FirebaseSetup';
 import { collection, onSnapshot} from 'firebase/firestore';
 import EntriesList from '../components/EntriesList';
@@ -31,12 +31,7 @@ function AllExpensesScreen() {
     );
     }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-    },
-});
+
 
 
 export default AllExpensesScreen;

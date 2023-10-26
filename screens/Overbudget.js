@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { View,StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import EntriesList from '../components/EntriesList';
 import { database } from '../firebase/FirebaseSetup';
 import { collection, onSnapshot} from 'firebase/firestore';
@@ -31,11 +31,5 @@ function OverbudgetExpensesScreen() {
     );
     }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-    },
-});
 
 export default OverbudgetExpensesScreen;

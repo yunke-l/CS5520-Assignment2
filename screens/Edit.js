@@ -78,14 +78,33 @@ function EditScreen( {navigation, route} ) {
 
     // delete button handler
     const handleDelete = () => {
-        try {
-            deleteFromDB(currentEntry.id);
-        }
-        catch (error) {
-            Alert.alert('Error', 'An error occurred while deleting the entry.');
-        }
-        navigation.goBack();
-    }
+        const deleteEntry = () => {
+            try {
+                deleteFromDB(currentEntry.id);
+                navigation.goBack();
+            }
+            catch (error) {
+                Alert.alert('Error', 'An error occurred while deleting the entry.');
+            }
+        };
+    
+        Alert.alert(
+            'Confirmation', 
+            'Are you sure you want to delete this item?', 
+            [
+                {
+                    text: 'Cancel',
+                    onPress: () => {}, 
+                    style: 'cancel',
+                },
+                {
+                    text: 'Delete',
+                    onPress: deleteEntry, 
+                    style: 'destructive',
+                },
+            ]
+        );
+    };
 
 
     // delete button
